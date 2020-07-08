@@ -13,7 +13,14 @@ import numpy as np
 app = Flask(__name__)
 api = Api(app)
 
-model = load_model('inceptionv3.h5')
+model = load_model('inceptionv3.h5') 
+## Model loaded from keras
+# from keras.applications import InceptionV3
+# model = InceptionV3(
+#     include_top=True,
+#     weights="imagenet",
+#     classes=1000
+# )
 with open('imagenet_class_index.json', 'r') as f:
     labels = json.load(f)
 
