@@ -53,22 +53,22 @@ class ImageClassify(Resource):
         url = data['url']
         n = data['n']
         
-        try:
-            get_image(url)
-            predictions = predict()
-            res = get_best_prediction(predictions, n)
-            print(res)
-            return jsonify({
-                'status': 200,
-                'classification': res
-            })
-        except:
-            return jsonify({
-                'status': 303,
-                'message': 'Something went wrong. You may try another image'
-            })
+        # try:
+        get_image(url)
+        predictions = predict()
+        res = get_best_prediction(predictions, n)
+        print(res)
+        return jsonify({
+            'status': 200,
+            'classification': res
+        })
+        # except:
+        #     return jsonify({
+        #         'status': 303,
+        #         'message': 'Something went wrong. You may try another image'
+        #     })
 
 api.add_resource(ImageClassify, '/classify')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=7693)
